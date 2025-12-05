@@ -118,7 +118,12 @@ python app.py
 
 L'API sera disponible sur `http://localhost:5000`
 
-### Démarrer Apache NiFi
+### Télécharger Apache NIFI
+```bash
+https://dlcdn.apache.org/nifi/2.6.0/nifi-2.6.0-bin.zip
+```
+
+### Dézipper et Démarrer Apache NiFi
 
 ```bash
 cd nifi-2.6.0
