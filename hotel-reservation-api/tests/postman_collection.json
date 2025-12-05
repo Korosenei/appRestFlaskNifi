@@ -1,0 +1,383 @@
+{
+  "info": {
+    "name": "API Réservation Hôtel",
+    "description": "Collection complète pour tester l'API de réservation d'hôtel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "GET - Tous les clients",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clients?page=1&per_page=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "per_page", "value": "10"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Client par ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clients/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Créer un client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Nouveau\",\n  \"prenom\": \"Client\",\n  \"email\": \"nouveau.client@email.com\",\n  \"telephone\": \"+33612345678\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clients",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT - Mettre à jour un client",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"telephone\": \"+33698765432\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/clients/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE - Supprimer un client",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/clients/10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "clients", "10"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Chambres",
+      "item": [
+        {
+          "name": "GET - Toutes les chambres",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chambres",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Chambres par type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chambres?type=Suite",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres"],
+              "query": [
+                {"key": "type", "value": "Suite"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Chambres disponibles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chambres?disponible=true",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres"],
+              "query": [
+                {"key": "disponible", "value": "true"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Chambre par ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chambres/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Créer une chambre",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"numero\": \"401\",\n  \"type\": \"Suite\",\n  \"prix_par_nuit\": \"300.00\",\n  \"capacite\": 4,\n  \"disponible\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chambres",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT - Mettre à jour une chambre",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prix_par_nuit\": \"280.00\",\n  \"disponible\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chambres/5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chambres", "5"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Réservations",
+      "item": [
+        {
+          "name": "GET - Toutes les réservations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations?page=1&per_page=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations"],
+              "query": [
+                {"key": "page", "value": "1"},
+                {"key": "per_page", "value": "10"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Réservations par statut",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations?statut=confirmee",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations"],
+              "query": [
+                {"key": "statut", "value": "confirmee"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Réservations par client",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations?client_id=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations"],
+              "query": [
+                {"key": "client_id", "value": "1"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Réservation par ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Créer une réservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": 1,\n  \"chambre_id\": 2,\n  \"date_arrivee\": \"2025-12-30\",\n  \"date_depart\": \"2026-01-05\",\n  \"nombre_personnes\": 1,\n  \"statut\": \"confirmee\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reservations",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT - Mettre à jour une réservation",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre_personnes\": 2,\n  \"date_depart\": \"2026-01-06\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reservations/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT - Annuler une réservation",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations/1/cancel",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations", "1", "cancel"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE - Supprimer une réservation",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reservations/10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reservations", "10"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Statistiques",
+      "item": [
+        {
+          "name": "GET - Statistiques générales",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "stats"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GET - Page d'accueil",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        }
+      },
+      "response": []
+    }
+  ]
+}
